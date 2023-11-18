@@ -32,7 +32,6 @@ function FamousMoviesSlider() {
         return (
           <div className="flex flex-col">
             <Dialog>
-              {/* <p className="text-3xl text-white">TESTE</p> */}
               <Card className="max-w-[279px] h-[150px] relative border-none bg-[#141414] cursor-pointer ml-5">
                 <CardContent
                   className="w-full h-full bg-cover bg-center rounded-lg filter brightness-50 hover:brightness-100 
@@ -77,8 +76,10 @@ function FamousMoviesSlider() {
                       <p>ADICIONAR AOS FAVORITOS</p>
                       <MdFavoriteBorder size={30} />
                     </div>
-                    <h1 className="text-2xl mt-4">Sinopse:</h1>
-                    <p className="text-base pt-2">{selectedMovie.overview}</p>
+                    <div className="overflow-auto h-48">
+                      <h1 className="text-2xl mt-4">Sinopse:</h1>
+                      <p className="text-base pt-2">{selectedMovie.overview}</p>
+                    </div>
                   </div>
                 </div>
               </DialogContent>
