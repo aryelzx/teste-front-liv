@@ -28,7 +28,7 @@ function RatingMoviesSlider() {
     <Slider {...settings}>
       {ratingMovies.value.results.map((movie) => {
         return (
-          <div className="flex flex-col">
+          <div key={movie.id} className="flex flex-col">
             <Dialog>
               <Card className="max-w-[279px] h-[150px] relative border-none bg-[#141414] cursor-pointer ml-5">
                 <CardContent

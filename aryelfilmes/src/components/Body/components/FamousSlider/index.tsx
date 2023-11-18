@@ -10,10 +10,15 @@ import {
   DialogHeader,
   DialogTrigger
 } from "../../../../shared/components/ui/dialog";
+import { useFavoritesMoviesContext } from "../../../../shared/contexts/favoritesMoviesContext";
 import { useMoviesContext } from "../../../../shared/contexts/moviesContext";
 import { DataMoviesInterface } from "../../../../shared/interfaces/getMovies.interface";
 
 function FamousMoviesSlider() {
+  const { famousMovies } = useMoviesContext()
+  const { favsMovies } = useFavoritesMoviesContext()
+  const [selectedMovie, setSelectedMovie] = useState<DataMoviesInterface>({} as DataMoviesInterface)
+
   const settings = {
     dots: false,
     infinite: true,
@@ -22,15 +27,18 @@ function FamousMoviesSlider() {
     slidesToScroll: 4,
     arrows: false,
   };
-  const { famousMovies } = useMoviesContext()
 
-  const [selectedMovie, setSelectedMovie] = useState<DataMoviesInterface>({} as DataMoviesInterface)
+  function handleAddFavoriteMovie(movie: DataMoviesInterface) {
+    const movieExists = favsMovies.value.find((item) => item.id === movie.id)
+    if (movieExists) return
 
+    favsMovies.setValue([...favsMovies.value, movie])
+  }
   return (
     <Slider {...settings}>
       {famousMovies.value.results.map((movie) => {
         return (
-          <div className="flex flex-col">
+          <div key={movie.id} className="flex flex-col">
             <Dialog>
               <Card className="max-w-[279px] h-[150px] relative border-none bg-[#141414] cursor-pointer ml-5">
                 <CardContent
@@ -71,7 +79,7 @@ function FamousMoviesSlider() {
                   <div className="flex flex-col overflow-auto">
                     <div
                       className="w-64 flex gap-2 items-center border-2 border-gray-500 rounded p-1 cursor-pointer"
-                      onClick={() => console.log(movie)}
+                      onClick={() => handleAddFavoriteMovie(movie)}
                     >
                       <p>ADICIONAR AOS FAVORITOS</p>
                       <MdFavoriteBorder size={30} />
