@@ -5,8 +5,8 @@ function Body() {
   const { movies } = useMoviesContext()
   return (
 
-    <div className="w-full ml-[100px] h-[calc(100vh-45vh)]">
-      <div className="h-full bg-[#141414]">
+    <div className="ml-[100px] h-[calc(100vh-40vh)]">
+      <div className=" bg-[#141414] min-h-full">
         <h3 className="text-[20px] px-[18px] py-[10px] text-white font-semibold">
           Filmes mais populares:
         </h3>
