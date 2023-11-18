@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { MdFavoriteBorder } from "react-icons/md";
+import { MdOutlineFavorite } from "react-icons/md";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
@@ -11,40 +11,35 @@ import {
   DialogTrigger
 } from "../../../../shared/components/ui/dialog";
 import { useFavoritesMoviesContext } from "../../../../shared/contexts/favoritesMoviesContext";
-import { useMoviesContext } from "../../../../shared/contexts/moviesContext";
 import { DataMoviesInterface } from "../../../../shared/interfaces/getMovies.interface";
 
-function FamousMoviesSlider() {
-  const { famousMovies } = useMoviesContext()
-  const { favsMovies } = useFavoritesMoviesContext()
+function FavoritesMoviesList() {
   const [selectedMovie, setSelectedMovie] = useState<DataMoviesInterface>({} as DataMoviesInterface)
+  const { favsMovies } = useFavoritesMoviesContext()
 
   const settings = {
     dots: false,
-    infinite: true,
+    infinite: false,
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 4,
     arrows: false,
   };
 
-  function handleAddFavoriteMovie(movie: DataMoviesInterface) {
-    const movieExists = favsMovies.value.find((item) => item.id === movie.id)
-    if (movieExists) return
-
-    favsMovies.setValue([...favsMovies.value, movie])
+  function handleRemoveFavoriteMovie(movie: DataMoviesInterface) {
+    const newFavsMovies = favsMovies.value.filter((item) => item.id !== movie.id)
+    favsMovies.setValue(newFavsMovies)
   }
-
-
+  console.log(favsMovies.value)
   return (
     <Slider {...settings}>
-      {famousMovies.value.results.map((movie) => {
+      {favsMovies.value.map((movie) => {
         return (
           <div key={movie.id} className="flex flex-col cursor-grab">
             <Dialog>
-              <Card className="max-w-[279px] h-[150px] relative border-none bg-[#141414] cursor-pointer ml-5">
+              <Card className="max-w-[379px] h-[350px] relative border-none bg-[#141414] cursor-pointer ml-5">
                 <CardContent
-                  className="w-full h-full bg-cover bg-center rounded-lg filter brightness-50 hover:brightness-100 
+                  className="w-full h-full bg-contain bg-center rounded-lg filter brightness-50 hover:brightness-100 
                   transition duration-500 ease-in-out flex justify-center items-center absolute"
                   style={{
                     backgroundImage: `url(https://image.tmdb.org/t/p/w500/${movie.poster_path})`,
@@ -54,9 +49,6 @@ function FamousMoviesSlider() {
                     className="w-full h-full absolute"
                     onClick={() => setSelectedMovie(movie)}
                   >
-                    <div className="relative bottom-0 w-full h-full flex items-end text-center justify-center">
-                      <h1 className="text-[15px] font-semibold text-white px-2">{movie.title}</h1>
-                    </div>
                   </DialogTrigger>
                 </CardContent>
               </Card>
@@ -80,15 +72,13 @@ function FamousMoviesSlider() {
                   }
                   <div className="flex flex-col overflow-auto">
                     <div
-                      className=" flex items-center justify-center gap-2 w-60 border-[1px] border-gray-500 rounded p-1 cursor-pointer
-                      hover:border-green-500 hover:text-green-500 transition duration-500 ease-in-out"
-                      onClick={() => handleAddFavoriteMovie(movie)}
+                      className="w-64 flex gap-2 items-center border-2 border-gray-500 rounded p-1 cursor-pointer
+                      hover:border-red-500 hover:text-red-500 transition duration-500 ease-in-out
+                      "
+                      onClick={() => handleRemoveFavoriteMovie(movie)}
                     >
-                      <p className="text-green-500 text-sm">
-                        ADICIONAR AOS FAVORITOS
-                      </p>
-                      <MdFavoriteBorder size={30} />
-
+                      <p>REMOVER DOS FAVORITOS</p>
+                      <MdOutlineFavorite size={30} />
                     </div>
                     <div className="overflow-auto h-48">
                       <h1 className="text-2xl mt-4">Sinopse:</h1>
@@ -106,5 +96,5 @@ function FamousMoviesSlider() {
   );
 }
 
-export { FamousMoviesSlider };
+export { FavoritesMoviesList };
 

@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { GetMoviesOutputInterface } from "../../shared/interfaces/getMovies.interface";
 import { useGetFamousMovies } from "../services/getFamousMovies/getFamousMovies.service";
 import { useGetRatingMovies } from "../services/getRatedMovies/getRatingMovies.service";
+import { useFavoritesMoviesContext } from "./favoritesMoviesContext";
 
 type MoviesContextProps = {
   famousMovies: {
@@ -19,6 +20,7 @@ const MoviesContext = createContext<MoviesContextProps>({} as MoviesContextProps
 const MoviesContextProvider = ({ children }: { children: React.ReactNode }) => {
   const [famousMovies, getFamousMovies] = useState<GetMoviesOutputInterface>({} as GetMoviesOutputInterface);
   const [ratingMovies, getRatingMovies] = useState<GetMoviesOutputInterface>({} as GetMoviesOutputInterface);
+  const { favsMovies } = useFavoritesMoviesContext()
   // const [loading, setLoading] = useState(false);
   // const [error, setError] = useState(null);
 
@@ -55,7 +57,7 @@ const MoviesContextProvider = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     GetFamousMovies()
-  }, [famousMovies]);
+  }, [famousMovies, favsMovies]);
 
   useEffect(() => {
     GetRatingMovies()

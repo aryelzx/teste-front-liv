@@ -1,15 +1,20 @@
 import { GrAdd } from "react-icons/gr";
 import { HiHome } from "react-icons/hi";
+import { useNavigate } from 'react-router-dom';
 import { useAside } from "./useAside";
 function Aside() {
   const { handleDrawer, isMenuOpen, handleSelectIconHome, handleSelectIconList } = useAside();
+
+  const navigate = useNavigate();
 
   return (
     <div
       id="menu"
       onClick={handleDrawer}
       className='w-[100px] fixed bg-[#000] h-full flex flex-col pt-40 gap-5'>
-      <div className="flex pl-5  items-center gap-4">
+      <div
+        onClick={() => navigate('/')}
+        className="flex pl-5  items-center gap-4">
         <p
           onClick={handleSelectIconHome}
           id="iconHome"
@@ -18,7 +23,10 @@ function Aside() {
         </p>
         <p id="text-home" className="hidden text-3xl text-[#FDF7F7] font-semibold">Home</p>
       </div>
-      <div className="flex pl-5  items-center gap-4">
+      <div
+        className="flex pl-5  items-center gap-4 "
+        onClick={() => navigate('/favs')}
+      >
         <p
           onClick={handleSelectIconList}
           id="iconList"

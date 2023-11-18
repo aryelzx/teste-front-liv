@@ -1,17 +1,17 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { DataMoviesInterface } from "../interfaces/getMovies.interface";
-
 type FavoritesMoviesContextProps = {
   favsMovies: {
     value: DataMoviesInterface[];
     setValue: (value: DataMoviesInterface[]) => void;
-  },
+  }
 };
 
 const FavoritesMoviesContext = createContext<FavoritesMoviesContextProps>({} as FavoritesMoviesContextProps);
 
 const FavoritesMoviesContextProvider = ({ children }: { children: React.ReactNode }) => {
   const [favsMoviesList, setFavsMoviesList] = useState<DataMoviesInterface[]>([]);
+
 
   const value: FavoritesMoviesContextProps = {
     favsMovies: {
@@ -20,7 +20,24 @@ const FavoritesMoviesContextProvider = ({ children }: { children: React.ReactNod
     }
   };
 
-  console.log(value.favsMovies.value)
+  function PutFavoritesMoviesOnLocalStorage() {
+    const favsJSON = JSON.stringify(favsMoviesList)
+    localStorage.setItem("@favs_movies", favsJSON)
+  }
+
+  function GetFavoritesMoviesOnLocalStorage() {
+    const favsJSON = localStorage.getItem("@favs_movies")
+    const favsMovies = favsJSON ? JSON.parse(favsJSON) : []
+    setFavsMoviesList(favsMovies)
+  }
+
+  useEffect(() => {
+    GetFavoritesMoviesOnLocalStorage()
+  }, [setFavsMoviesList]);
+
+  useEffect(() => {
+    PutFavoritesMoviesOnLocalStorage()
+  }, [favsMoviesList]);
 
   return (
     <FavoritesMoviesContext.Provider value={value}>
