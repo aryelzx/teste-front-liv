@@ -1,25 +1,25 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { GetMoviesOutputDto } from "../services/getMovies/getMovies.dto";
-import { useGetUserData } from "../services/getMovies/getMovies.service";
+import { GetMoviesOutputInterface } from "../../shared/interfaces/getMovies.interface";
+import { useGetFamousMovies } from "../services/getFamousMovies/getFamousMovies.service";
 
 type MoviesContextProps = {
   movies: {
-    value: GetMoviesOutputDto;
-    setValue: (value: GetMoviesOutputDto) => void;
+    value: GetMoviesOutputInterface;
+    setValue: (value: GetMoviesOutputInterface) => void;
   };
 };
 
 const MoviesContext = createContext<MoviesContextProps>({} as MoviesContextProps);
 
 const MoviesContextProvider = ({ children }: { children: React.ReactNode }) => {
-  const [movies, setMovies] = useState<GetMoviesOutputDto>({} as GetMoviesOutputDto);
+  const [famousMovies, getFamousMovies] = useState<GetMoviesOutputInterface>({} as GetMoviesOutputInterface);
   // const [loading, setLoading] = useState(false);
   // const [error, setError] = useState(null);
 
   const getMovies = async () => {
     try {
-      const response = await useGetUserData.execute()
-      setMovies(response)
+      const response = await useGetFamousMovies.execute()
+      getFamousMovies(response)
     }
     catch (err) {
       console.log(err)
@@ -28,14 +28,14 @@ const MoviesContextProvider = ({ children }: { children: React.ReactNode }) => {
 
   const value: MoviesContextProps = {
     movies: {
-      value: movies,
-      setValue: setMovies,
+      value: famousMovies,
+      setValue: getFamousMovies,
     },
   };
 
   useEffect(() => {
     getMovies()
-  }, [movies]);
+  }, [famousMovies]);
 
   return (
     <MoviesContext.Provider value={value}>

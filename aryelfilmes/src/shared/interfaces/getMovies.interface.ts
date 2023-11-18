@@ -1,4 +1,4 @@
-interface GetMoviesOutputDto {
+interface GetMoviesOutputInterface {
   page: number;
   results: [
     {
@@ -20,5 +20,5 @@ interface GetMoviesOutputDto {
   ]
 }
 
-export type { GetMoviesOutputDto };
+export type { GetMoviesOutputInterface };
 

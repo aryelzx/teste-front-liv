@@ -7,7 +7,7 @@ import { useMoviesContext } from "../../../../shared/contexts/moviesContext";
 
 function MoviesSlider() {
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 4,
