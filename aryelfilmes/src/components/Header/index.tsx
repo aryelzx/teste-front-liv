@@ -4,7 +4,7 @@ function Header() {
   const { movies } = useMoviesContext()
 
   return (
-    <div className="ml-[100px] h-[60vh]">
+    <div className="ml-[100px] h-[calc(100vh-55vh)]">
       <div className="flex justify-center h-full w-full">
         {
           movies.value.results && (

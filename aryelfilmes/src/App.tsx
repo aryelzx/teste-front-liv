@@ -6,10 +6,8 @@ function App() {
   return (
 
     <MoviesContextProvider>
-      <div className="min-w-screen min-h-screen bg-[#141414]">
-        <Aside />
-        <Main />
-      </div>
+      <Aside />
+      <Main />
     </MoviesContextProvider>
   )
 }
