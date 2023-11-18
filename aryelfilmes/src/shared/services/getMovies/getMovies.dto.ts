@@ -1,4 +1,4 @@
-interface GetDataHeaderOutputDTO {
+interface GetMoviesOutputDto {
   page: number;
   results: [
     {
@@ -20,5 +20,5 @@ interface GetDataHeaderOutputDTO {
   ]
 }
 
-export type { GetDataHeaderOutputDTO };
+export type { GetMoviesOutputDto };
 

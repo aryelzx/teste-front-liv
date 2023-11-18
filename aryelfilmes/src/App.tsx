@@ -1,12 +1,16 @@
 import { Aside } from "./components/Aside"
 import { Main } from "./components/Main"
+import { MoviesContextProvider } from "./shared/contexts/moviesContext"
 
 function App() {
   return (
-    <div className="w-screen h-screen bg-[#141414] grid grid-cols-1">
-      <Aside />
-      <Main />
-    </div>
+
+    <MoviesContextProvider>
+      <div className="min-w-screen min-h-screen bg-[#141414]">
+        <Aside />
+        <Main />
+      </div>
+    </MoviesContextProvider>
   )
 }
 

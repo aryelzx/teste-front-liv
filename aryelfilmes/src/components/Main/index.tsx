@@ -1,12 +1,11 @@
+import { Body } from "../Body"
 import { Header } from "../Header"
 
 function Main() {
-
-
   return (
-    <div className="h-full w-full bg-slate-200">
+    <div>
       <Header />
-      <p>main</p>
+      <Body />
     </div>
   )
 }
