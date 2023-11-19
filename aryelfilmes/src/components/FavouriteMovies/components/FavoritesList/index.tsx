@@ -30,7 +30,6 @@ function FavoritesMoviesList() {
     const newFavsMovies = favsMovies.value.filter((item) => item.id !== movie.id)
     favsMovies.setValue(newFavsMovies)
   }
-  console.log(favsMovies.value)
   return (
     <Slider {...settings}>
       {favsMovies.value.map((movie) => {

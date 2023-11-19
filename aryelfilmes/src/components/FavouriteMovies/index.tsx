@@ -1,9 +1,12 @@
 import { MdOutlineMovieFilter } from "react-icons/md";
+import { PiHeartBreakFill } from "react-icons/pi";
+import { useFavoritesMoviesContext } from "../../shared/contexts/favoritesMoviesContext";
 import img from '../../shared/utils/images/profilee2.jpg';
 import { Aside } from "../Aside";
 import { FavoritesMoviesList } from "./components/FavoritesList";
 
 function FavoriteMoviesList() {
+  const { favsMovies } = useFavoritesMoviesContext()
   return (
     <div>
       <Aside />
@@ -15,14 +18,22 @@ function FavoriteMoviesList() {
           <h1 className="text-3xl">Aryel Cordeiro Ramos Gonçalves</h1>
         </header>
         <main>
-          <div className="flex m-5 text-2xl items-center gap-3">
-            <p>
+          <div className="flex m-5 text-2xl items-center gap-3 justify-between">
+            <p className="flex items-center gap-3 ">
               Minha lista
-            </p>
-            {
-              //TODO CONDICIONAR SE TEM FILMES NA LISTA SE NAO TIVER MOSTRAR O ICONE DE FILME VAZIO
               <MdOutlineMovieFilter size={30} />
-            }
+            </p>
+            <p>filtro</p>
+          </div>
+          <div>
+            {favsMovies.value.length === 0 && (
+              <div className="flex flex-col items-center justify-center opacity-70">
+                <i className="text-3xl">Você ainda não tem filmes favoritos.</i>
+                <span className="m-3 ">
+                  <PiHeartBreakFill size={100} />
+                </span>
+              </div>
+            )}
           </div>
           <div>
             <FavoritesMoviesList />
