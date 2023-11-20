@@ -23,12 +23,12 @@ function RatingMoviesSlider() {
               <Card className="max-w-[279px] h-[150px] relative border-none bg-[#141414] cursor-pointer ml-5">
                 <CardContent
                   className="w-full h-full bg-cover bg-center rounded-lg filter brightness-50 
-                  hover:brightness-100 transition duration-500 ease-in-out flex justify-center items-center absolute"
+                  hover:brightness-100 transition duration-500 ease-in-out flex justify-center items-center absolute hover:scale-110"
                   style={{
                     backgroundImage: `url(https://image.tmdb.org/t/p/w500/${movie.poster_path})`,
                     backgroundRepeat: 'no-repeat'
                   }}>
-                  <div className="w-10 h-10 rounded-full bg-black items-center flex justify-center absolute top-2 left-2 border-white border-2">
+                  <div className="w-10 h-10 rounded-full bg-black items-center flex justify-center absolute top-4 left-3 border-white border-2">
                     <p className="text-white font-mono font-semibold text-sm">
                       {movie.vote_average.toFixed(1)}
                     </p>
