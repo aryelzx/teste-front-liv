@@ -1,39 +1,18 @@
-import { useState } from "react";
+import { IoIosHeart } from "react-icons/io";
 import { MdFavoriteBorder } from "react-icons/md";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import { Card, CardContent } from "../../../../shared/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTrigger } from "../../../../shared/components/ui/dialog";
-import { useFavoritesMoviesContext } from "../../../../shared/contexts/favoritesMoviesContext";
 import { useMoviesContext } from "../../../../shared/contexts/moviesContext";
-import { DataMoviesInterface } from "../../../../shared/interfaces/getMovies.interface";
+import UseFavoritesList from "../../../FavouriteMovies/components/FavoritesList/useFavoritesList";
+import { UseRatingSlider } from "./useRatingSlider";
 
 function RatingMoviesSlider() {
-  const [selectedRatingMovie, setSelectedRatingMovie] = useState<DataMoviesInterface>({} as DataMoviesInterface)
-
-  const { favsMovies } = useFavoritesMoviesContext()
+  const { handleRemoveFavoriteMovie } = UseFavoritesList()
   const { ratingMovies } = useMoviesContext()
-
-  function handleAddFavoriteMovie(movie: DataMoviesInterface) {
-    const movieExists = favsMovies.value.find((item) => item.id === movie.id)
-    if (movieExists) return
-    favsMovies.setValue([...favsMovies.value, movie])
-  }
-
-  const settings = {
-    dots: false,
-    infinite: true,
-    speed: 1000,
-    slidesToShow: 4,
-    slidesToScroll: 4,
-    arrows: false,
-    fade: false,
-    autoplay: true,
-    autoplaySpeed: 3000,
-    pauseOnHover: true,
-    pauseOnFocus: true,
-  };
+  const { handleAddFavoriteMovie, isFavorite, selectedRatingMovie, settings } = UseRatingSlider()
 
   return (
     <Slider {...settings}>
@@ -51,7 +30,7 @@ function RatingMoviesSlider() {
                   }}>
                   <DialogTrigger
                     className="w-full h-full absolute"
-                    onClick={() => setSelectedRatingMovie(movie)}
+                    onClick={() => selectedRatingMovie.set(movie)}
                   >
                     <div className="relative bottom-0 w-full h-full flex items-end text-center justify-center">
                       <h1 className="text-[15px] font-semibold text-white px-2">{movie.title}</h1>
@@ -63,10 +42,10 @@ function RatingMoviesSlider() {
                 <div>
                   <DialogHeader>
                     <div className="flex items-center gap-3">
-                      <h1 className="text-2xl font-semibold">{selectedRatingMovie.title}</h1>
+                      <h1 className="text-2xl font-semibold">{selectedRatingMovie.value.title}</h1>
                       <div className="w-12 h-10 rounded-full bg-gray-300 items-center flex justify-center">
                         <p className="text-black font-mono font-semibold text-sm">
-                          {selectedRatingMovie.vote_average}
+                          {selectedRatingMovie.value.vote_average}
                         </p>
                       </div>
                     </div>
@@ -74,20 +53,42 @@ function RatingMoviesSlider() {
                   { //TODO adicionar loading para imagem
                     <img
                       className="rounded-lg w-full h-52 object-cover object-center my-4"
-                      src={`https://image.tmdb.org/t/p/w500/${selectedRatingMovie.backdrop_path}`}
-                      alt={selectedRatingMovie.backdrop_path} />
+                      src={`https://image.tmdb.org/t/p/w500/${selectedRatingMovie.value.backdrop_path}`}
+                      alt={selectedRatingMovie.value.backdrop_path} />
                   }
-                  <div className="flex flex-col overflow-auto">
+                  <div className="flex flex-col">
                     <div
-                      className="w-64 flex gap-2 items-center border-2 border-gray-500 rounded p-1 cursor-pointer"
+                      className="flex items-center justify-center gap-2 w-72 border-[1px] border-gray-500 rounded p-1 cursor-pointer
+                      hover:border-gray-300 transition duration-500 ease-in-out"
                       onClick={() => handleAddFavoriteMovie(movie)}
                     >
-                      <p>ADICIONAR AOS FAVORITOS</p>
-                      <MdFavoriteBorder size={30} />
+                      {
+                        isFavorite ? (
+                          <div className="flex w-full justify-center items-center gap-2"
+                            onClick={() => handleRemoveFavoriteMovie(movie)}
+                          >
+                            <p className="text-red-500 text-sm">
+                              REMOVER DOS FAVORITOS
+                            </p>
+                            <p className="text-red-500">
+                              <IoIosHeart size={30} />
+                            </p>
+                          </div>
+                        ) : (
+                          <div className="flex w-full justify-center items-center gap-2">
+                            <p className="text-green-500 text-sm">
+                              ADICIONAR AOS FAVORITOS
+                            </p>
+                            <p>
+                              <MdFavoriteBorder size={30} />
+                            </p>
+                          </div>
+                        )
+                      }
                     </div>
                     <div className="overflow-auto h-48">
                       <h1 className="text-2xl mt-4">Sinopse:</h1>
-                      <p className="text-base pt-2">{selectedRatingMovie.overview}</p>
+                      <p className="text-base pt-2">{selectedRatingMovie.value.overview}</p>
                     </div>
                   </div>
                 </div>
