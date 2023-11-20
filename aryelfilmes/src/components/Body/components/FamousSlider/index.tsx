@@ -33,6 +33,11 @@ function FamousMoviesSlider() {
                     backgroundImage: `url(https://image.tmdb.org/t/p/w500/${movie.poster_path})`,
                     backgroundRepeat: 'no-repeat'
                   }}>
+                  <div className="w-10 h-10 rounded-full bg-black items-center flex justify-center absolute top-2 left-2 border-white border-2">
+                    <p className="text-white font-mono font-semibold text-sm">
+                      {movie.vote_average.toFixed(1)}
+                    </p>
+                  </div>
                   <DialogTrigger
                     className="w-full h-full absolute"
                     onClick={() => selectedMovie.set(movie)}
