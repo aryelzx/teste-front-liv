@@ -57,11 +57,11 @@ const MoviesContextProvider = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     GetFamousMovies()
-  }, [famousMovies, favsMovies]);
+  }, []);
 
   useEffect(() => {
     GetRatingMovies()
-  }, [ratingMovies]);
+  }, []);
 
   return (
     <MoviesContext.Provider value={value}>
