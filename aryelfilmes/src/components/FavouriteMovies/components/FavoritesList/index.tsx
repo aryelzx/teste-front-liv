@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { MdOutlineFavorite } from "react-icons/md";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
@@ -11,25 +10,13 @@ import {
   DialogTrigger
 } from "../../../../shared/components/ui/dialog";
 import { useFavoritesMoviesContext } from "../../../../shared/contexts/favoritesMoviesContext";
-import { DataMoviesInterface } from "../../../../shared/interfaces/getMovies.interface";
+import UseFavoritesList from "./useFavoritesList";
 
 function FavoritesMoviesList() {
-  const [selectedMovie, setSelectedMovie] = useState<DataMoviesInterface>({} as DataMoviesInterface)
+
   const { favsMovies } = useFavoritesMoviesContext()
+  const { handleRemoveFavoriteMovie, settings, selectedMovie } = UseFavoritesList()
 
-  const settings = {
-    dots: false,
-    infinite: false,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 4,
-    arrows: false,
-  };
-
-  function handleRemoveFavoriteMovie(movie: DataMoviesInterface) {
-    const newFavsMovies = favsMovies.value.filter((item) => item.id !== movie.id)
-    favsMovies.setValue(newFavsMovies)
-  }
   return (
     <Slider {...settings}>
       {favsMovies.value.map((movie) => {
@@ -46,7 +33,7 @@ function FavoritesMoviesList() {
                   }}>
                   <DialogTrigger
                     className="w-full h-full absolute"
-                    onClick={() => setSelectedMovie(movie)}
+                    onClick={() => selectedMovie.set(movie)}
                   >
                   </DialogTrigger>
                 </CardContent>
@@ -55,10 +42,10 @@ function FavoritesMoviesList() {
                 <div>
                   <DialogHeader>
                     <div className="flex items-center gap-3">
-                      <h1 className="text-2xl font-semibold">{selectedMovie.title}</h1>
+                      <h1 className="text-2xl font-semibold">{selectedMovie.value.title}</h1>
                       <div className="w-12 h-10 rounded-full bg-gray-300 items-center flex justify-center">
                         <p className="text-black font-mono font-semibold text-sm">
-                          {selectedMovie.vote_average}
+                          {selectedMovie.value.vote_average}
                         </p>
                       </div>
                     </div>
@@ -66,8 +53,8 @@ function FavoritesMoviesList() {
                   { //TODO adicionar loading para imagem
                     <img
                       className="rounded-lg w-full h-52 object-cover object-center my-4"
-                      src={`https://image.tmdb.org/t/p/w500/${selectedMovie.backdrop_path}`}
-                      alt={selectedMovie.backdrop_path} />
+                      src={`https://image.tmdb.org/t/p/w500/${selectedMovie.value.backdrop_path}`}
+                      alt={selectedMovie.value.backdrop_path} />
                   }
                   <div className="flex flex-col overflow-auto">
                     <div
@@ -81,7 +68,7 @@ function FavoritesMoviesList() {
                     </div>
                     <div className="overflow-auto h-48">
                       <h1 className="text-2xl mt-4">Sinopse:</h1>
-                      <p className="text-base pt-2">{selectedMovie.overview}</p>
+                      <p className="text-base pt-2">{selectedMovie.value.overview}</p>
                     </div>
                   </div>
                 </div>
