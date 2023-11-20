@@ -23,7 +23,7 @@ function UseFamousSlider() {
 
     favsMovies.setValue([...favsMovies.value, movie])
   }
-
+  console.log(selectedMovie.id)
   useEffect(() => {
     const movieExists = favsMovies.value.find((item) => item.id === selectedMovie.id)
     if (movieExists) {
