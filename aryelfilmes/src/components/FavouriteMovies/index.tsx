@@ -4,9 +4,11 @@ import { useFavoritesMoviesContext } from "../../shared/contexts/favoritesMovies
 import img from '../../shared/utils/images/profilee2.jpg';
 import { Aside } from "../Aside";
 import { FavoritesMoviesList } from "./components/FavoritesList";
+import { FilterFavoriteMovies } from "./components/Popover/index";
 
 function FavoriteMoviesList() {
   const { favsMovies } = useFavoritesMoviesContext()
+
   return (
     <div>
       <Aside />
@@ -23,7 +25,7 @@ function FavoriteMoviesList() {
               Minha lista
               <MdOutlineMovieFilter size={30} />
             </p>
-            <p>filtro</p>
+            <FilterFavoriteMovies />
           </div>
           <div>
             {favsMovies.value.length === 0 && (
@@ -35,9 +37,7 @@ function FavoriteMoviesList() {
               </div>
             )}
           </div>
-          <div>
-            <FavoritesMoviesList />
-          </div>
+          <FavoritesMoviesList />
         </main>
       </div >
     </div>

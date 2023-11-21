@@ -4,6 +4,7 @@ import { DataMoviesInterface } from '../../../../shared/interfaces/getMovies.int
 
 function UseFavoritesList() {
   const [selectedMovie, setSelectedMovie] = useState<DataMoviesInterface>({} as DataMoviesInterface)
+  const [filterValue, setFilterValue] = useState("")
 
   const { favsMovies } = useFavoritesMoviesContext()
 
@@ -25,7 +26,8 @@ function UseFavoritesList() {
   return {
     handleRemoveFavoriteMovie,
     settings,
-    selectedMovie: { value: selectedMovie, set: setSelectedMovie }
+    selectedMovie: { value: selectedMovie, set: setSelectedMovie },
+    filterValue: { value: filterValue, set: setFilterValue }
   }
 }
 

@@ -4,6 +4,10 @@ type FavoritesMoviesContextProps = {
   favsMovies: {
     value: DataMoviesInterface[];
     setValue: (value: DataMoviesInterface[]) => void;
+  },
+  filterValue?: {
+    value: string;
+    set: (value: string) => void;
   }
 };
 
@@ -11,12 +15,17 @@ const FavoritesMoviesContext = createContext<FavoritesMoviesContextProps>({} as 
 
 const FavoritesMoviesContextProvider = ({ children }: { children: React.ReactNode }) => {
   const [favsMoviesList, setFavsMoviesList] = useState<DataMoviesInterface[]>([]);
+  const [filter, setFilter] = useState("");
 
 
   const value: FavoritesMoviesContextProps = {
     favsMovies: {
       value: favsMoviesList,
       setValue: setFavsMoviesList,
+    },
+    filterValue: {
+      value: filter,
+      set: setFilter
     }
   };
 
