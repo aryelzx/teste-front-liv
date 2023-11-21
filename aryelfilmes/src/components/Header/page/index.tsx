@@ -42,7 +42,7 @@ function Header() {
                   </div>
                 </div>
               </DialogTrigger>
-              <DialogContent className="w-full h-5/6 bg-[#141414] text-white">
+              <DialogContent className="w-full h-5/6 bg-[#141414] text-white rounded-2xl">
                 <div>
                   <DialogHeader>
                     <div className="flex items-center gap-3">
