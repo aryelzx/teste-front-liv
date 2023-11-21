@@ -2,7 +2,7 @@ import { IoIosHeart } from "react-icons/io"
 import { MdFavoriteBorder } from "react-icons/md"
 import { Dialog, DialogContent, DialogHeader, DialogTrigger } from "../../shared/components/ui/dialog"
 import { useMoviesContext } from "../../shared/contexts/moviesContext"
-import UseFavoritesList from "../FavouriteMovies/components/FavoritesList/useFavoritesList"
+import UseFavoritesList from "../FavoritesMovies/components/FavoritesList/useFavoritesList"
 import UseHeader from "./useHeader"
 function Header() {
 

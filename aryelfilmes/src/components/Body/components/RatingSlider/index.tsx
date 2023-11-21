@@ -6,7 +6,7 @@ import "slick-carousel/slick/slick.css";
 import { Card, CardContent } from "../../../../shared/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTrigger } from "../../../../shared/components/ui/dialog";
 import { useMoviesContext } from "../../../../shared/contexts/moviesContext";
-import UseFavoritesList from "../../../FavouriteMovies/components/FavoritesList/useFavoritesList";
+import UseFavoritesList from "../../../FavoritesMovies/components/FavoritesList/useFavoritesList";
 import { UseRatingSlider } from "./useRatingSlider";
 
 function RatingMoviesSlider() {

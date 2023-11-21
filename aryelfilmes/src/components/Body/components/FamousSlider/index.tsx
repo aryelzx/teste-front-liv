@@ -11,7 +11,7 @@ import {
   DialogTrigger
 } from "../../../../shared/components/ui/dialog";
 import { useMoviesContext } from "../../../../shared/contexts/moviesContext";
-import UseFavoritesList from "../../../FavouriteMovies/components/FavoritesList/useFavoritesList";
+import UseFavoritesList from "../../../FavoritesMovies/components/FavoritesList/useFavoritesList";
 import UseFamousSlider from "./useFamousSlider";
 
 function FamousMoviesSlider() {
