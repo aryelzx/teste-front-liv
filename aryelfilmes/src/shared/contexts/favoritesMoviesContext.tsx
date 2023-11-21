@@ -18,7 +18,12 @@ type FavoritesMoviesContextProps = {
 const FavoritesMoviesContext = createContext<FavoritesMoviesContextProps>({} as FavoritesMoviesContextProps);
 
 const FavoritesMoviesContextProvider = ({ children }: { children: React.ReactNode }) => {
-  const [favsMoviesList, setFavsMoviesList] = useState<DataMoviesInterface[]>([]);
+  const [favsMoviesList, setFavsMoviesList] = useState<DataMoviesInterface[]>(() => {
+    const favsJSON = localStorage.getItem("@favs_movies")
+    const favsMovies = favsJSON ? JSON.parse(favsJSON) : []
+    return favsMovies
+  });
+  
   const [filter, setFilter] = useState("");
   const [searchFilter, setSearchFilter] = useState("");
 
