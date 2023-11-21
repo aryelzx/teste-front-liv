@@ -35,7 +35,7 @@ function UseFavoritesList() {
     dots: false,
     infinite: false,
     speed: 500,
-    slidesToShow: 4,
+    slidesToShow: 5,
     slidesToScroll: 4,
     arrows: true,
     nextArrow: <SampleNextArrow />,

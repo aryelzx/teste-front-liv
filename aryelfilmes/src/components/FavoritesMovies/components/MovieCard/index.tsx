@@ -20,7 +20,7 @@ function MovieList({ movie }: MovieListProps) {
     <>
       <div key={movie.id} className="flex flex-col cursor-grab">
         <Dialog>
-          <Card className="max-w-[379px]  h-[350px] relative border-none bg-[#141414] cursor-pointer ml-5">
+          <Card className="max-w-[230px]  h-[350px] relative border-none bg-[#141414] cursor-pointer ml-5">
             <CardContent
               className="w-full h-full bg-contain bg-center rounded-lg filter brightness-50 hover:brightness-100 
                     transition duration-500 ease-in-out flex justify-center items-center absolute hover:scale-105"
@@ -29,7 +29,7 @@ function MovieList({ movie }: MovieListProps) {
                 backgroundSize: 'contain',
                 backgroundRepeat: 'no-repeat'
               }}>
-              <div className="w-10 h-10 rounded-full bg-gray-900 items-center flex justify-center absolute top-3 right-12 border-white border-2">
+              <div className="w-10 h-10 rounded-full bg-gray-900 items-center flex justify-center absolute top-3 right-3 border-white border-2">
                 <p className="text-white font-mono font-bold text-sm">
                   {movie.vote_average.toFixed(1)}
                 </p>
