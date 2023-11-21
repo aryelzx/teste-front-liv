@@ -23,7 +23,20 @@ function FilterFavoriteMovies() {
             <PopoverTrigger>
               <Button variant={"outline"} className="text-black flex gap-3 items-center">
                 <FaFilter size={15} />
-                Filtrar
+                {
+                  filterValue?.value === "0" ? (
+                    <p>Sem Filtro</p>
+                  ) :
+                    filterValue?.value === "1" ? (
+                      <p>Decrescente</p>
+                    ) : filterValue?.value === "2" ? (
+                      <p>Crescente</p>
+                    ) : filterValue?.value === "3" ? (
+                      <p>Recentes</p>
+                    ) : (
+                      <p>Filtrar...</p>
+                    )
+                }
               </Button>
             </PopoverTrigger>
             <PopoverContent className="flex flex-col gap-3">
