@@ -1,6 +1,7 @@
 import { IoIosHeart } from "react-icons/io"
 import { MdFavoriteBorder } from "react-icons/md"
 import { Dialog, DialogContent, DialogHeader, DialogTrigger } from "../../shared/components/ui/dialog"
+import { Skeleton } from "../../shared/components/ui/skeleton"
 import { useMoviesContext } from "../../shared/contexts/moviesContext"
 import UseFavoritesList from "../FavoritesMovies/components/FavoritesList/useFavoritesList"
 import UseHeader from "./useHeader"
@@ -12,7 +13,7 @@ function Header() {
 
 
   return (
-    <div className="ml-[100px] h-[calc(100vh-60vh)]">
+    <div className="ml-[100px] h-[calc(100vh-65vh)]">
       {famousMovies.value.results?.map((movie) => (
         movie.title === "A Freira 2" &&
         <Dialog>
@@ -25,11 +26,11 @@ function Header() {
                 backgroundRepeat: 'no-repeat'
               }}>
               <div className="w-fit">
-                <h1 className="text-[40px] font-bold pt-[50px] ">
+                <h1 className="text-[40px] font-bold pt-[50px] text-left">
                   {movie.title}
                 </h1>
                 <div className="h-[150px] w-fit overflow-auto">
-                  <p className="text-[18px] w-[530px] font-semibold break-all">
+                  <p className="text-[18px] w-[530px] font-semibold break-all text-left">
                     {movie.overview}
                   </p>
                 </div>
@@ -48,11 +49,14 @@ function Header() {
                   </div>
                 </div>
               </DialogHeader>
-              { //TODO adicionar loading para imagem
+              {movie.poster_path ? (
                 <img
                   className="rounded-lg w-full h-52 object-cover object-center my-4"
                   src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                   alt={movie.backdrop_path} />
+              ) : (
+                <Skeleton className="rounded-lg w-full h-52 object-cover object-center my-4" />
+              )
               }
               <div className="flex flex-col overflow-auto">
                 <div

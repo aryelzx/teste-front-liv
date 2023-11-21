@@ -20,6 +20,7 @@
     "axios": "^1.6.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
+    "dayjs": "^1.11.10",
     "dotenv": "^16.3.1",
     "lucide-react": "^0.292.0",
     "postcss": "^8.4.31",

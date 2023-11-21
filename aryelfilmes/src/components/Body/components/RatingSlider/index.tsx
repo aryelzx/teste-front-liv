@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import { Card, CardContent } from "../../../../shared/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTrigger } from "../../../../shared/components/ui/dialog";
+import { Skeleton } from "../../../../shared/components/ui/skeleton";
 import { useMoviesContext } from "../../../../shared/contexts/moviesContext";
 import UseFavoritesList from "../../../FavoritesMovies/components/FavoritesList/useFavoritesList";
 import { UseRatingSlider } from "./useRatingSlider";
@@ -55,11 +56,14 @@ function RatingMoviesSlider() {
                       </div>
                     </div>
                   </DialogHeader>
-                  { //TODO adicionar loading para imagem
+                  {selectedRatingMovie.value.backdrop_path ? (
                     <img
                       className="rounded-lg w-full h-52 object-cover object-center my-4"
                       src={`https://image.tmdb.org/t/p/w500/${selectedRatingMovie.value.backdrop_path}`}
                       alt={selectedRatingMovie.value.backdrop_path} />
+                  ) : (
+                    <Skeleton className="rounded-lg w-full h-52 object-cover object-center my-4" />
+                  )
                   }
                   <div className="flex flex-col">
                     <div

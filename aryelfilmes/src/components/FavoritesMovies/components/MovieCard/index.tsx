@@ -6,6 +6,7 @@ import {
   DialogHeader,
   DialogTrigger
 } from "../../../../shared/components/ui/dialog";
+import { Skeleton } from "../../../../shared/components/ui/skeleton";
 import { DataMoviesInterface } from '../../../../shared/interfaces/getMovies.interface';
 import UseFavoritesList from '../FavoritesList/useFavoritesList';
 
@@ -51,11 +52,14 @@ function MovieList({ movie }: MovieListProps) {
                   </div>
                 </div>
               </DialogHeader>
-              { //TODO adicionar loading para imagem
+              {selectedMovie.value.backdrop_path ? (
                 <img
                   className="rounded-lg w-full h-52 object-cover object-center my-4"
                   src={`https://image.tmdb.org/t/p/w500/${selectedMovie.value.backdrop_path}`}
                   alt={selectedMovie.value.backdrop_path} />
+              ) : (
+                <Skeleton className="rounded-lg w-full h-52 object-cover object-center my-4" />
+              )
               }
               <div className="flex flex-col overflow-auto">
                 <div

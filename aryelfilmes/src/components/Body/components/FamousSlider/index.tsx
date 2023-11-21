@@ -1,8 +1,11 @@
+import dayjs from "dayjs";
 import { IoIosHeart } from "react-icons/io";
 import { MdFavoriteBorder } from "react-icons/md";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
+import { Skeleton } from "../../../../shared/components/ui/skeleton";
+
 import { Card, CardContent } from "../../../../shared/components/ui/card";
 import {
   Dialog,
@@ -25,15 +28,15 @@ function FamousMoviesSlider() {
         return (
           <div key={movie.id} className="flex flex-col cursor-grab">
             <Dialog>
-              <Card className="max-w-[279px] h-[150px] relative border-none bg-[#141414] cursor-pointer ml-5">
+              <Card className="max-w-[330px] h-[160px] relative border-none bg-[#141414] cursor-pointer ml-5">
                 <CardContent
-                  className="w-full h-full bg-cover bg-center rounded-lg filter brightness-50 hover:brightness-100 
-                  transition duration-500 ease-in-out flex justify-center items-center absolute hover:scale-110"
+                  className="w-full h-full bg-contain filter brightness-50 hover:brightness-100 border-r-2 border-white
+                  transition duration-500 ease-in-out flex justify-center items-center absolute hover:scale-105"
                   style={{
                     backgroundImage: `url(https://image.tmdb.org/t/p/w500/${movie.poster_path})`,
                     backgroundRepeat: 'no-repeat'
                   }}>
-                  <div className="w-10 h-10 rounded-full bg-gray-900 items-center flex justify-center absolute top-4 left-3 border-white border-2">
+                  <div className="w-10 h-10 rounded-full bg-gray-900 items-center flex justify-center absolute top-4 right-3 border-white border-2">
                     <p className="text-white font-mono font-bold text-sm">
                       {movie.vote_average.toFixed(1)}
                     </p>
@@ -42,8 +45,11 @@ function FamousMoviesSlider() {
                     className="w-full h-full absolute"
                     onClick={() => selectedMovie.set(movie)}
                   >
-                    <div className="relative bottom-0 w-full h-full flex items-end text-center justify-center">
-                      <h1 className="text-[15px] font-semibold text-white px-2">{movie.title}</h1>
+                    <div className="relative bottom-3 left-11 top-7 w-full h-full flex justify-center flex-col">
+                      <h1 className="text-[20px] font-semibold text-white px-2">{movie.title.length > 25 ? movie.title.slice(0, 20) : movie.title}</h1>
+                      <p className="text-[20px] font-semibold text-white p-1">
+                        {dayjs(movie.release_date).format('YYYY')}
+                      </p>
                     </div>
                   </DialogTrigger>
                 </CardContent>
@@ -60,11 +66,14 @@ function FamousMoviesSlider() {
                       </div>
                     </div>
                   </DialogHeader>
-                  { //TODO adicionar loading para imagem
+                  {selectedMovie.value?.backdrop_path ? (
                     <img
                       className="rounded-lg w-full h-52 object-cover object-center my-4"
                       src={`https://image.tmdb.org/t/p/w500/${selectedMovie.value.backdrop_path}`}
                       alt={selectedMovie.value.backdrop_path} />
+                  ) : (
+                    <Skeleton className="rounded-lg w-full h-52 object-cover object-center my-4" />
+                  )
                   }
                   <div className="flex flex-col overflow-auto">
                     <div

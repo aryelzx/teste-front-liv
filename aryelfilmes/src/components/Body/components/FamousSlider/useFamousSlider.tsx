@@ -12,9 +12,9 @@ function UseFamousSlider() {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 4,
-    arrows: false,
+    slidesToShow: 3,
+    slidesToScroll: 3,
+    arrows: true,
   };
 
   function handleAddFavoriteMovie(movie: DataMoviesInterface) {

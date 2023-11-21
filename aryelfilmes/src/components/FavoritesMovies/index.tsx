@@ -12,12 +12,12 @@ function FavoriteMoviesList() {
   return (
     <div>
       <Aside />
-      <div className="ml-[100px] h-[100vh] bg-[#141414] text-white">
+      <div className="ml-[100px] h-[100vh] bg-[#0c0c0c] text-white">
         <header className="w-full h-2/6 border-b-2 rounded justify-center items-center flex flex-col gap-5">
           <div className="w-[100px] h-[100px] border-2 border-white rounded-full">
             <img className="rounded-full w-full h-full" src={img} alt="profile picture" />
           </div>
-          <h1 className="text-3xl">Aryel Cordeiro Ramos Gonçalves</h1>
+          <i className="text-2xl text-gray-400">Aryel Cordeiro Ramos Gonçalves</i>
         </header>
         <main>
           <div className="flex m-5 text-2xl items-center gap-3 justify-between">
