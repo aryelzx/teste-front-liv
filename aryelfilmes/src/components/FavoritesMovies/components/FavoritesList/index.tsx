@@ -19,11 +19,12 @@ function FavoritesMoviesList() {
     <>
       <Slider {...settings}>
         {
-          filterValue?.value === "0" ? (
-            favsMovies.value.map((movie) => (
-              <MovieList key={movie.id} movie={movie} />
-            ))
-          ) :
+          searchFilter.value.length > 0 ?
+            (
+              moviesListSearch.map((movie) => (
+                <MovieList key={movie.id} movie={movie} />
+              ))
+            ) :
             filterValue?.value === "1" ? (
               moviesListDesc.map((movie) => (
                 <MovieList key={movie.id} movie={movie} />
@@ -37,10 +38,11 @@ function FavoritesMoviesList() {
                 <MovieList key={movie.id} movie={movie} /> //✔
               ))
             ) :
-              searchFilter.value.length > 0 ? (
-                moviesListSearch.map((movie) => (
+              filterValue?.value === "0" ? (
+                favsMovies.value.map((movie) => (
                   <MovieList key={movie.id} movie={movie} />
                 ))
+
               ) : favsMovies?.value && (
                 favsMovies.value.map((movie) => (
                   <MovieList key={movie.id} movie={movie} />

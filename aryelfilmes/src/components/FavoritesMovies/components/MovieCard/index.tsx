@@ -41,12 +41,12 @@ function MovieList({ movie }: MovieListProps) {
               </DialogTrigger>
             </CardContent>
           </Card>
-          <DialogContent className="w-full h-5/6 bg-[#141414] text-white">
+          <DialogContent className="w-full h-5/6 bg-[#141414] text-white rounded-2xl">
             <div>
               <DialogHeader>
-                <div className="flex items-center gap-3">
-                  <h1 className="text-2xl font-semibold">{selectedMovie.value.title}</h1>
-                  <div className="w-12 h-10 rounded-full bg-gray-300 items-center flex justify-center">
+                <div className="flex items-center justify-start gap-3">
+                  <h1 className="text-2xl font-semibold flex justify-end">{selectedMovie.value.title}</h1>
+                  <div className="w-10 h-10 rounded-full bg-gray-300 items-center flex justify-center">
                     <p className="text-black font-mono font-semibold text-sm">
                       {selectedMovie.value.vote_average}
                     </p>

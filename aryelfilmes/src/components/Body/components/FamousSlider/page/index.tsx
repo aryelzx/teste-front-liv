@@ -56,7 +56,7 @@ function FamousMoviesSlider() {
                   </DialogTrigger>
                 </CardContent>
               </Card>
-              <DialogContent className="w-full h-fit bg-[#141414] text-white">
+              <DialogContent className="w-full h-fit bg-[#141414] text-white rounded-2xl">
                 <div>
                   <DialogHeader>
                     <div className="flex items-center gap-3">

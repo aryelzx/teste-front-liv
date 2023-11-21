@@ -40,14 +40,14 @@ function RatingMoviesSlider() {
                     onClick={() => selectedRatingMovie.set(movie)}
                   >
                     <div className="relative bottom-0 w-full h-full flex items-end text-center justify-center ">
-                      <h1 className="text-[12px] border-[1px] border-gray-500 rounded-full font-semibold text-gray-900 px-2 bg-[#c0c0c0] transition duration-500 ease-in-out">
+                      <h1 className="text-[12px] font-bold border-[1px] border-gray-500 rounded-full text-white px-2 hover:bg-[#000] transition duration-500 ease-in-out">
                         {movie.title}
                       </h1>
                     </div>
                   </DialogTrigger>
                 </CardContent>
               </Card>
-              <DialogContent className="w-full desktop:h-fit h-5/6 bg-[#141414] text-white">
+              <DialogContent className="w-full desktop:h-fit h-5/6 bg-[#141414] text-white rounded-2xl">
                 <div>
                   <DialogHeader>
                     <div className="flex items-center gap-3">
