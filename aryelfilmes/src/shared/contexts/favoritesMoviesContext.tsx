@@ -9,6 +9,10 @@ type FavoritesMoviesContextProps = {
     value: string;
     set: (value: string) => void;
   }
+  searchFilter: {
+    value: string;
+    set: (value: string) => void;
+  }
 };
 
 const FavoritesMoviesContext = createContext<FavoritesMoviesContextProps>({} as FavoritesMoviesContextProps);
@@ -16,6 +20,7 @@ const FavoritesMoviesContext = createContext<FavoritesMoviesContextProps>({} as 
 const FavoritesMoviesContextProvider = ({ children }: { children: React.ReactNode }) => {
   const [favsMoviesList, setFavsMoviesList] = useState<DataMoviesInterface[]>([]);
   const [filter, setFilter] = useState("");
+  const [searchFilter, setSearchFilter] = useState("");
 
 
   const value: FavoritesMoviesContextProps = {
@@ -26,6 +31,10 @@ const FavoritesMoviesContextProvider = ({ children }: { children: React.ReactNod
     filterValue: {
       value: filter,
       set: setFilter
+    },
+    searchFilter: {
+      value: searchFilter,
+      set: setSearchFilter
     }
   };
 

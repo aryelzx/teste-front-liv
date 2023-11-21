@@ -6,7 +6,7 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectVa
 import { useFavoritesMoviesContext } from "../../../../shared/contexts/favoritesMoviesContext";
 
 function FilterFavoriteMovies() {
-  const { filterValue, favsMovies } = useFavoritesMoviesContext()
+  const { filterValue, favsMovies, searchFilter } = useFavoritesMoviesContext()
   const [haveFilter, setHaveFilter] = useState(false)
 
   useEffect(() => {
@@ -26,7 +26,13 @@ function FilterFavoriteMovies() {
                 Filtrar
               </Button>
             </PopoverTrigger>
-            <PopoverContent>
+            <PopoverContent className="flex flex-col gap-3">
+              <input
+                type="text"
+                placeholder="Pesquisar..."
+                className="w-full h-10 rounded p-2 border-2"
+                onChange={(e) => searchFilter.set(e.target.value)}
+              />
               <Select
                 value={filterValue?.value}
                 onValueChange={(value) => filterValue?.set(value)}>

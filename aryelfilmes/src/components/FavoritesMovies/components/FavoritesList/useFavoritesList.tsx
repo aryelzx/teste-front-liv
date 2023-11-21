@@ -27,7 +27,7 @@ function UseFavoritesList() {
     handleRemoveFavoriteMovie,
     settings,
     selectedMovie: { value: selectedMovie, set: setSelectedMovie },
-    filterValue: { value: filterValue, set: setFilterValue }
+    filterValue: { value: filterValue, set: setFilterValue },
   }
 }
 
