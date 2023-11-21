@@ -39,7 +39,7 @@ function UseRatingSlider() {
     }
 
   }, [favsMovies.value, selectedRatingMovie])
-  console.log(favsMovies.value)
+
   return {
     settings,
     selectedRatingMovie: { value: selectedRatingMovie, set: setSelectedRatingMovie },

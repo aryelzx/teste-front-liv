@@ -15,7 +15,6 @@ function FavoritesMoviesList() {
   const moviesListRecent = favsMovies.value.slice().reverse() //recent
   const moviesListSearch = favsMovies.value.filter((movie) => movie.title.toLowerCase().includes(searchFilter.value.toLowerCase()))
 
-  console.log(moviesListSearch)
   return (
     <>
       <Slider {...settings}>
