@@ -25,7 +25,7 @@ function RatingMoviesSlider() {
                 <CardContent
                   className="w-full h-full desktop:bg-content bg-cover bg-center rounded-lg filter brightness-50 
                   hover:brightness-100 transition duration-500 ease-in-out flex justify-center items-center
-                   absolute hover:scale-110"
+                   absolute hover:scale-105 hover:rounded-lg"
                   style={{
                     backgroundImage: `url(https://image.tmdb.org/t/p/w500/${movie.backdrop_path})`,
                     backgroundSize: 'cover',
