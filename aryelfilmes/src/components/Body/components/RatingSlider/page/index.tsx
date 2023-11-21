@@ -30,8 +30,8 @@ function RatingMoviesSlider() {
                     backgroundImage: `url(https://image.tmdb.org/t/p/w500/${movie.poster_path})`,
                     backgroundRepeat: 'no-repeat'
                   }}>
-                  <div className="w-10 h-10 rounded-full bg-black items-center flex justify-center absolute top-2 right-1 border-white border-2 opacity-60">
-                    <p className="text-white font-semibold text-sm ">
+                  <div className="w-10 h-10 rounded-full bg-black items-center flex justify-center absolute top-2 right-[-16px] border-white border-2 opacity-70">
+                    <p className="text-white font-bold ">
                       {movie.vote_average.toFixed(1)}
                     </p>
                   </div>
