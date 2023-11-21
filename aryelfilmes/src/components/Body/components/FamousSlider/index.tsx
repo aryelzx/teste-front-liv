@@ -31,7 +31,7 @@ function FamousMoviesSlider() {
             className="flex flex-col cursor-grab"
           >
             <Dialog>
-              <Card className="desktop:max-w-[380px] max-w-[330px] desktop:h-[180px] h-[160px] relative border-none bg-[#141414] cursor-pointer ml-5 font-sans">
+              <Card className="desktop:max-w-[380px] max-w-[330px] desktop:h-[180px] h-[160px] relative border-none bg-[#0f0f0f] cursor-pointer ml-3">
                 <CardContent
                   className="w-full h-full bg-contain filter brightness-50 hover:brightness-100 border-r-2 border-white
                   transition duration-500 ease-in-out flex justify-center items-center absolute hover:scale-105"
@@ -40,7 +40,7 @@ function FamousMoviesSlider() {
                     backgroundRepeat: 'no-repeat',
                   }}
                 >
-                  <div className="w-10 h-10 rounded-full bg-gray-900 items-center flex justify-center absolute top-2 right-2 border-white border-2">
+                  <div className="w-10 h-10 rounded-full bg-gray-900 items-center flex justify-center absolute top-3 right-3 border-white border-2">
                     <p className="text-white font-mono font-bold text-sm">
                       {movie.vote_average.toFixed(1)}
                     </p>
@@ -49,15 +49,15 @@ function FamousMoviesSlider() {
                     className="w-full h-full absolute"
                     onClick={() => selectedMovie.set(movie)}
                   >
-                    <div className="
+                    <div
+                      className="
                     desktop:justify-end desktop:w-[250px] relative bottom-3 left-32 top-10 w-[200px] 
-                    h-fit flex justify-center items-end flex-col">
+                    h-fit flex justify-center items-end flex-col"
+                    >
                       <h1 className="text-[18px] font-semibold text-white px-2">
-                        {movie.title.length > 25
-                          ? movie.title.slice(0)
-                          : movie.title}
+                        {movie.title}
                       </h1>
-                      <p className="text-[20px] font-semibold text-white relative bottom-1 right-2">
+                      <p className="text-[20px] font-semibold text-white relative bottom-1 right-3">
                         {dayjs(movie.release_date).format('YYYY')}
                       </p>
                     </div>
