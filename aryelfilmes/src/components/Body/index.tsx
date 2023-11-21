@@ -5,7 +5,6 @@ import { RatingMoviesSlider } from "./components/RatingSlider"
 function Body() {
   const { famousMovies, ratingMovies } = useMoviesContext()
   return (
-
     <div className="ml-[100px] h-[calc(100vh-40vh)]">
       <div className=" bg-[#141414] min-h-full">
         {famousMovies.value.results && (
