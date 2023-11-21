@@ -1,32 +1,35 @@
-import dayjs from "dayjs";
-import { IoIosHeart } from "react-icons/io";
-import { MdFavoriteBorder } from "react-icons/md";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick-theme.css";
-import "slick-carousel/slick/slick.css";
-import { Skeleton } from "../../../../shared/components/ui/skeleton";
+import dayjs from 'dayjs'
+import { IoIosHeart } from 'react-icons/io'
+import { MdFavoriteBorder } from 'react-icons/md'
+import Slider from 'react-slick'
+import 'slick-carousel/slick/slick-theme.css'
+import 'slick-carousel/slick/slick.css'
+import { Skeleton } from '../../../../shared/components/ui/skeleton'
 
-import { Card, CardContent } from "../../../../shared/components/ui/card";
+import { Card, CardContent } from '../../../../shared/components/ui/card'
 import {
   Dialog,
   DialogContent,
   DialogHeader,
-  DialogTrigger
-} from "../../../../shared/components/ui/dialog";
-import { useMoviesContext } from "../../../../shared/contexts/moviesContext";
-import UseFavoritesList from "../../../FavoritesMovies/components/FavoritesList/useFavoritesList";
-import UseFamousSlider from "./useFamousSlider";
-
+  DialogTrigger,
+} from '../../../../shared/components/ui/dialog'
+import { useMoviesContext } from '../../../../shared/contexts/moviesContext'
+import UseFavoritesList from '../../../FavoritesMovies/components/FavoritesList/useFavoritesList'
+import UseFamousSlider from './useFamousSlider'
 function FamousMoviesSlider() {
   const { famousMovies } = useMoviesContext()
   const { handleRemoveFavoriteMovie } = UseFavoritesList()
-  const { handleAddFavoriteMovie, selectedMovie, settings, isFavorite } = UseFamousSlider()
+  const { handleAddFavoriteMovie, selectedMovie, settings, isFavorite } =
+    UseFamousSlider()
 
   return (
     <Slider {...settings}>
       {famousMovies.value.results.map((movie) => {
         return (
-          <div key={movie.id} className="flex flex-col cursor-grab">
+          <div
+            key={movie.id}
+            className="flex flex-col cursor-grab"
+          >
             <Dialog>
               <Card className="max-w-[330px] h-[160px] relative border-none bg-[#141414] cursor-pointer ml-5">
                 <CardContent
@@ -34,9 +37,11 @@ function FamousMoviesSlider() {
                   transition duration-500 ease-in-out flex justify-center items-center absolute hover:scale-105"
                   style={{
                     backgroundImage: `url(https://image.tmdb.org/t/p/w500/${movie.poster_path})`,
-                    backgroundRepeat: 'no-repeat'
-                  }}>
-                  <div className="w-10 h-10 rounded-full bg-gray-900 items-center flex justify-center absolute top-4 right-3 border-white border-2">
+                    // backgroundImage: `url(${img})`,
+                    backgroundRepeat: 'no-repeat',
+                  }}
+                >
+                  <div className="w-10 h-10 rounded-full bg-gray-900 items-center flex justify-center absolute top-2 right-2 border-white border-2">
                     <p className="text-white font-mono font-bold text-sm">
                       {movie.vote_average.toFixed(1)}
                     </p>
@@ -45,9 +50,13 @@ function FamousMoviesSlider() {
                     className="w-full h-full absolute"
                     onClick={() => selectedMovie.set(movie)}
                   >
-                    <div className="relative bottom-3 left-11 top-7 w-full h-full flex justify-center flex-col">
-                      <h1 className="text-[20px] font-semibold text-white px-2">{movie.title.length > 25 ? movie.title.slice(0, 20) : movie.title}</h1>
-                      <p className="text-[20px] font-semibold text-white p-1">
+                    <div className="relative bottom-3 left-32 top-10 w-[200px] h-fit flex justify-center items-end flex-col">
+                      <h1 className="text-[18px] font-semibold text-white px-2">
+                        {movie.title.length > 25
+                          ? movie.title.slice(0)
+                          : movie.title}
+                      </h1>
+                      <p className="text-[20px] font-semibold text-white relative bottom-1 right-2">
                         {dayjs(movie.release_date).format('YYYY')}
                       </p>
                     </div>
@@ -58,7 +67,9 @@ function FamousMoviesSlider() {
                 <div>
                   <DialogHeader>
                     <div className="flex items-center gap-3">
-                      <h1 className="text-2xl font-semibold">{selectedMovie.value.title}</h1>
+                      <h1 className="text-2xl font-semibold">
+                        {selectedMovie.value.title}
+                      </h1>
                       <div className="w-12 h-10 rounded-full bg-gray-300 items-center flex justify-center">
                         <p className="text-black font-mono font-semibold text-sm">
                           {selectedMovie.value.vote_average}
@@ -70,45 +81,45 @@ function FamousMoviesSlider() {
                     <img
                       className="rounded-lg w-full h-52 object-cover object-center my-4"
                       src={`https://image.tmdb.org/t/p/w500/${selectedMovie.value.backdrop_path}`}
-                      alt={selectedMovie.value.backdrop_path} />
+                      alt={selectedMovie.value.backdrop_path}
+                    />
                   ) : (
                     <Skeleton className="rounded-lg w-full h-52 object-cover object-center my-4" />
-                  )
-                  }
+                  )}
                   <div className="flex flex-col overflow-auto">
                     <div
                       className=" flex items-center justify-center gap-2 w-60 border-[1px] border-gray-500 rounded p-1 cursor-pointer
                       hover:border-gray-400 transition duration-500 ease-in-out"
                       onClick={() => handleAddFavoriteMovie(movie)}
                     >
-                      {
-                        isFavorite ? (
-                          <div className="flex w-full justify-center items-center gap-2"
-                            onClick={() => handleRemoveFavoriteMovie(movie)}
-                          >
-                            <p className="text-red-500 text-sm">
-                              REMOVER DOS FAVORITOS
-                            </p>
-                            <p className="text-red-500">
-                              <IoIosHeart size={30} />
-                            </p>
-                          </div>
-                        ) : (
-                          <div className="flex w-full justify-center items-center gap-2">
-                            <p className="text-green-500 text-sm">
-                              ADICIONAR AOS FAVORITOS
-                            </p>
-                            <p>
-                              <MdFavoriteBorder size={30} />
-                            </p>
-                          </div>
-                        )
-                      }
-
+                      {isFavorite ? (
+                        <div
+                          className="flex w-full justify-center items-center gap-2"
+                          onClick={() => handleRemoveFavoriteMovie(movie)}
+                        >
+                          <p className="text-red-500 text-sm">
+                            REMOVER DOS FAVORITOS
+                          </p>
+                          <p className="text-red-500">
+                            <IoIosHeart size={30} />
+                          </p>
+                        </div>
+                      ) : (
+                        <div className="flex w-full justify-center items-center gap-2">
+                          <p className="text-green-500 text-sm">
+                            ADICIONAR AOS FAVORITOS
+                          </p>
+                          <p>
+                            <MdFavoriteBorder size={30} />
+                          </p>
+                        </div>
+                      )}
                     </div>
                     <div className="overflow-auto h-48">
                       <h1 className="text-2xl mt-4">Sinopse:</h1>
-                      <p className="text-base pt-2">{selectedMovie.value.overview}</p>
+                      <p className="text-base pt-2">
+                        {selectedMovie.value.overview}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -116,11 +127,10 @@ function FamousMoviesSlider() {
             </Dialog>
           </div>
         )
-      })
-      }
-    </Slider >
-  );
+      })}
+    </Slider>
+  )
 }
 
-export { FamousMoviesSlider };
+export { FamousMoviesSlider }
 

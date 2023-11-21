@@ -1,7 +1,7 @@
 import { MdOutlineMovieFilter } from "react-icons/md";
 import { PiHeartBreakFill } from "react-icons/pi";
 import { useFavoritesMoviesContext } from "../../shared/contexts/favoritesMoviesContext";
-import img from '../../shared/utils/images/profilee2.jpg';
+import img from '../../shared/utils/images/profile-picture-aryel.jpg';
 import { Aside } from "../Aside";
 import { FavoritesMoviesList } from "./components/FavoritesList";
 import { FilterFavoriteMovies } from "./components/Popover/index";

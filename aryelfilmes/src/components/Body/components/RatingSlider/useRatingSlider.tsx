@@ -2,10 +2,13 @@ import { useEffect, useState } from 'react';
 
 import { useFavoritesMoviesContext } from "../../../../shared/contexts/favoritesMoviesContext";
 import { DataMoviesInterface } from "../../../../shared/interfaces/getMovies.interface";
+import UseFamousSlider from '../FamousSlider/useFamousSlider';
 
 function UseRatingSlider() {
   const [selectedRatingMovie, setSelectedRatingMovie] = useState<DataMoviesInterface>({} as DataMoviesInterface)
   const [isFavorite, setIsFavorite] = useState(false)
+
+  const {SampleNextArrow} = UseFamousSlider()
 
   const { favsMovies } = useFavoritesMoviesContext()
 
@@ -22,12 +25,13 @@ function UseRatingSlider() {
     speed: 1000,
     slidesToShow: 4,
     slidesToScroll: 4,
-    arrows: false,
+    nextArrow: <SampleNextArrow />,
     fade: false,
     autoplay: true,
     autoplaySpeed: 3000,
     pauseOnHover: true,
     pauseOnFocus: true,
+
   };
 
   useEffect(() => {
