@@ -7,7 +7,7 @@ import { MovieList } from "../MovieCard";
 import UseFavoritesList from "./useFavoritesList";
 
 function FavoritesMoviesList() {
-  const { settings } = UseFavoritesList()
+  const { settings, } = UseFavoritesList()
   const { favsMovies, filterValue, searchFilter } = useFavoritesMoviesContext()
 
   const moviesListDesc = favsMovies.value.slice().sort(function (a, b) { return b.vote_average - a.vote_average }) //desc
@@ -37,7 +37,7 @@ function FavoritesMoviesList() {
                 <MovieList key={movie.id} movie={movie} /> //✔
               ))
             ) :
-              searchFilter.value !== "" ? (
+              searchFilter.value.length > 0 ? (
                 moviesListSearch.map((movie) => (
                   <MovieList key={movie.id} movie={movie} />
                 ))

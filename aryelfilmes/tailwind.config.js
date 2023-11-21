@@ -15,6 +15,14 @@ module.exports = {
         "2xl": "1400px",
       },
     },
+      screens: {
+      'desktop': '1024px'
+    },
+
+    fontFamily: {
+      // sans: ["", "sans-serif"],
+    },
+
     extend: {
       keyframes: {
         "accordion-down": {

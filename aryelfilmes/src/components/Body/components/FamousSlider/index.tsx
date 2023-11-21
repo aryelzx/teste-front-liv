@@ -31,13 +31,12 @@ function FamousMoviesSlider() {
             className="flex flex-col cursor-grab"
           >
             <Dialog>
-              <Card className="max-w-[330px] h-[160px] relative border-none bg-[#141414] cursor-pointer ml-5">
+              <Card className="desktop:max-w-[380px] max-w-[330px] desktop:h-[180px] h-[160px] relative border-none bg-[#141414] cursor-pointer ml-5 font-sans">
                 <CardContent
                   className="w-full h-full bg-contain filter brightness-50 hover:brightness-100 border-r-2 border-white
                   transition duration-500 ease-in-out flex justify-center items-center absolute hover:scale-105"
                   style={{
                     backgroundImage: `url(https://image.tmdb.org/t/p/w500/${movie.poster_path})`,
-                    // backgroundImage: `url(${img})`,
                     backgroundRepeat: 'no-repeat',
                   }}
                 >
@@ -50,7 +49,9 @@ function FamousMoviesSlider() {
                     className="w-full h-full absolute"
                     onClick={() => selectedMovie.set(movie)}
                   >
-                    <div className="relative bottom-3 left-32 top-10 w-[200px] h-fit flex justify-center items-end flex-col">
+                    <div className="
+                    desktop:justify-end desktop:w-[250px] relative bottom-3 left-32 top-10 w-[200px] 
+                    h-fit flex justify-center items-end flex-col">
                       <h1 className="text-[18px] font-semibold text-white px-2">
                         {movie.title.length > 25
                           ? movie.title.slice(0)
@@ -63,7 +64,7 @@ function FamousMoviesSlider() {
                   </DialogTrigger>
                 </CardContent>
               </Card>
-              <DialogContent className="w-full h-5/6 bg-[#141414] text-white">
+              <DialogContent className="w-full h-fit bg-[#141414] text-white">
                 <div>
                   <DialogHeader>
                     <div className="flex items-center gap-3">
@@ -115,9 +116,9 @@ function FamousMoviesSlider() {
                         </div>
                       )}
                     </div>
-                    <div className="overflow-auto h-48">
+                    <div className="h-48 overflow-y-auto ">
                       <h1 className="text-2xl mt-4">Sinopse:</h1>
-                      <p className="text-base pt-2">
+                      <p className="text-base pt-2 scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-gray-500">
                         {selectedMovie.value.overview}
                       </p>
                     </div>

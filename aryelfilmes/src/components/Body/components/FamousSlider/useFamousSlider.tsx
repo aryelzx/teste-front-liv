@@ -14,7 +14,7 @@ function UseFamousSlider() {
     const { onClick } = props
     return (
       <p
-        className="block text-white absolute top-14 right-3 cursor-pointer bg-zinc-700 rounded-full p-1 opacity-30 hover:bg-zinc-500"
+        className="block text-white absolute top-20 right-1 cursor-pointer bg-zinc-700 rounded-full p-1 opacity-50 hover:bg-zinc-500"
         onClick={onClick}
       >
         <GrNext size={25} />

@@ -21,12 +21,15 @@ function RatingMoviesSlider() {
         return (
           <div key={movie.id} className="flex flex-col  cursor-grab">
             <Dialog>
-              <Card className="max-w-[279px] h-[150px] relative border-none bg-[#141414] cursor-pointer ml-5">
+              <Card className="desktop:max-w-[400px] max-w-[279px] desktop:h-[200px] h-[150px] relative border-none bg-[#141414] cursor-pointer ml-5">
                 <CardContent
-                  className="w-full h-full bg-cover bg-center rounded-lg filter brightness-50 
-                  hover:brightness-100 transition duration-500 ease-in-out flex justify-center items-center absolute hover:scale-110"
+                  className="w-full h-full desktop:bg-content bg-cover bg-center rounded-lg filter brightness-50 
+                  hover:brightness-100 transition duration-500 ease-in-out flex justify-center items-center
+                   absolute hover:scale-110"
                   style={{
-                    backgroundImage: `url(https://image.tmdb.org/t/p/w500/${movie.poster_path})`,
+                    backgroundImage: `url(https://image.tmdb.org/t/p/w500/${movie.backdrop_path})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat'
                   }}>
                   <div className="w-10 h-10 rounded-full bg-black items-center flex justify-center absolute top-4 left-3 border-white border-2">
@@ -38,13 +41,15 @@ function RatingMoviesSlider() {
                     className="w-full h-full absolute"
                     onClick={() => selectedRatingMovie.set(movie)}
                   >
-                    <div className="relative bottom-0 w-full h-full flex items-end text-center justify-center">
-                      <h1 className="text-[15px] font-semibold text-white px-2">{movie.title}</h1>
+                    <div className="relative bottom-0 w-full h-full flex items-end text-center justify-center ">
+                      <h1 className="text-[15px] border-[1px] bg-[#333333] rounded-full font-semibold text-white px-2">
+                        {movie.title}
+                      </h1>
                     </div>
                   </DialogTrigger>
                 </CardContent>
               </Card>
-              <DialogContent className="w-full h-5/6 bg-[#141414] text-white">
+              <DialogContent className="w-full desktop:h-fit h-5/6 bg-[#141414] text-white">
                 <div>
                   <DialogHeader>
                     <div className="flex items-center gap-3">
