@@ -1,5 +1,5 @@
 const PathUrl = () => {
-  const baseApi = `https://api.themoviedb.org/3/movie/`
+  const baseApi = `https://api.themoviedb.org/3/`
   return baseApi
 
 }

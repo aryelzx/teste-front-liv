@@ -6,7 +6,7 @@ class GetRatingMovies {
   constructor(private readonly api: AxiosInstance) { }
 
   async execute(): Promise<GetMoviesOutputInterface> {
-    const result = await this.api.get(`/top_rated?language=pt-BR&page=1`)
+    const result = await this.api.get(`movie/top_rated?language=pt-BR&page=1`)
 
     return result.data
   }

@@ -6,7 +6,7 @@ class GetFamousMovies {
   constructor(private readonly api: AxiosInstance) { }
 
   async execute(): Promise<GetMoviesOutputInterface> {
-    const result = await this.api.get(`/popular?language=pt-BR&page=1`)
+    const result = await this.api.get(`movie/popular?language=pt-BR&page=1`)
 
     return result.data
   }
