@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import { MdOutlineMovieFilter } from "react-icons/md";
 import { PiHeartBreakFill } from "react-icons/pi";
-import { useFavoritesMoviesContext } from "../../shared/contexts/favoritesMoviesContext";
-import img from '../../shared/utils/images/user_icon_149329.png';
-import { Aside } from "../Aside";
-import { FavoritesMoviesList } from "./components/FavoritesList";
-import { FilterFavoriteMovies } from "./components/Popover/index";
-import { UseUserData } from "./useUserData";
+import { useFavoritesMoviesContext } from "../../../shared/contexts/favoritesMoviesContext";
+import img from '../../../shared/utils/images/user_icon_149329.png';
+import { Aside } from "../../Aside";
+import { FavoritesMoviesList } from "../components/FavoritesList";
+import { FilterFavoriteMovies } from "../components/Popover/index";
+import { UseUserData } from "../useUserData";
 
 
 function FavoriteMoviesList() {

@@ -3,12 +3,12 @@ import { MdFavoriteBorder } from "react-icons/md";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
-import { Card, CardContent } from "../../../../shared/components/ui/card";
-import { Dialog, DialogContent, DialogHeader, DialogTrigger } from "../../../../shared/components/ui/dialog";
-import { Skeleton } from "../../../../shared/components/ui/skeleton";
-import { useMoviesContext } from "../../../../shared/contexts/moviesContext";
-import UseFavoritesList from "../../../FavoritesMovies/components/FavoritesList/useFavoritesList";
-import { UseRatingSlider } from "./useRatingSlider";
+import { Card, CardContent } from "../../../../../shared/components/ui/card";
+import { Dialog, DialogContent, DialogHeader, DialogTrigger } from "../../../../../shared/components/ui/dialog";
+import { Skeleton } from "../../../../../shared/components/ui/skeleton";
+import { useMoviesContext } from "../../../../../shared/contexts/moviesContext";
+import UseFavoritesList from "../../../../FavoritesMovies/components/FavoritesList/useFavoritesList";
+import { UseRatingSlider } from "../useRatingSlider";
 
 function RatingMoviesSlider() {
   const { handleRemoveFavoriteMovie } = UseFavoritesList()
@@ -23,17 +23,15 @@ function RatingMoviesSlider() {
             <Dialog>
               <Card className="desktop:max-w-[400px] max-w-[279px] desktop:h-[200px] h-[150px] relative border-none bg-[#141414] cursor-pointer ml-5">
                 <CardContent
-                  className="w-full h-full desktop:bg-content bg-cover bg-center rounded-lg filter brightness-50 
+                  className="w-full h-full desktop:bg-content bg-fixed bg-cover bg-center rounded-lg filter brightness-50 
                   hover:brightness-100 transition duration-500 ease-in-out flex justify-center items-center
                    absolute hover:scale-105 hover:rounded-lg"
                   style={{
-                    backgroundImage: `url(https://image.tmdb.org/t/p/w500/${movie.backdrop_path})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
+                    backgroundImage: `url(https://image.tmdb.org/t/p/w500/${movie.poster_path})`,
                     backgroundRepeat: 'no-repeat'
                   }}>
-                  <div className="w-10 h-10 rounded-full bg-black items-center flex justify-center absolute top-4 left-3 border-white border-2">
-                    <p className="text-white font-mono font-semibold text-sm">
+                  <div className="w-10 h-10 rounded-full bg-black items-center flex justify-center absolute top-2 right-1 border-white border-2 opacity-60">
+                    <p className="text-white font-semibold text-sm ">
                       {movie.vote_average.toFixed(1)}
                     </p>
                   </div>
@@ -42,7 +40,7 @@ function RatingMoviesSlider() {
                     onClick={() => selectedRatingMovie.set(movie)}
                   >
                     <div className="relative bottom-0 w-full h-full flex items-end text-center justify-center ">
-                      <h1 className="text-[15px] border-[1px] bg-[#333333] rounded-full font-semibold text-white px-2">
+                      <h1 className="text-[12px] border-[1px] border-gray-500 rounded-full font-semibold text-gray-900 px-2 bg-[#c0c0c0] transition duration-500 ease-in-out">
                         {movie.title}
                       </h1>
                     </div>

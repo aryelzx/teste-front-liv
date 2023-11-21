@@ -1,6 +1,6 @@
 import { useMoviesContext } from "../../shared/contexts/moviesContext"
-import { FamousMoviesSlider } from "./components/FamousSlider"
-import { RatingMoviesSlider } from "./components/RatingSlider"
+import { FamousMoviesSlider } from "./components/FamousSlider/page/index"
+import { RatingMoviesSlider } from "./components/RatingSlider/page/index"
 
 function Body() {
   const { famousMovies, ratingMovies } = useMoviesContext()

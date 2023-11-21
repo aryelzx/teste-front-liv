@@ -1,21 +1,20 @@
-import dayjs from 'dayjs'
 import { IoIosHeart } from 'react-icons/io'
 import { MdFavoriteBorder } from 'react-icons/md'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick-theme.css'
 import 'slick-carousel/slick/slick.css'
-import { Skeleton } from '../../../../shared/components/ui/skeleton'
+import { Skeleton } from '../../../../../shared/components/ui/skeleton'
 
-import { Card, CardContent } from '../../../../shared/components/ui/card'
+import { Card, CardContent } from '../../../../../shared/components/ui/card'
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTrigger,
-} from '../../../../shared/components/ui/dialog'
-import { useMoviesContext } from '../../../../shared/contexts/moviesContext'
-import UseFavoritesList from '../../../FavoritesMovies/components/FavoritesList/useFavoritesList'
-import UseFamousSlider from './useFamousSlider'
+} from '../../../../../shared/components/ui/dialog'
+import { useMoviesContext } from '../../../../../shared/contexts/moviesContext'
+import UseFavoritesList from '../../../../FavoritesMovies/components/FavoritesList/useFavoritesList'
+import UseFamousSlider from '../useFamousSlider'
 function FamousMoviesSlider() {
   const { famousMovies } = useMoviesContext()
   const { handleRemoveFavoriteMovie } = UseFavoritesList()
@@ -31,7 +30,7 @@ function FamousMoviesSlider() {
             className="flex flex-col cursor-grab"
           >
             <Dialog>
-              <Card className="desktop:max-w-[380px] max-w-[330px] desktop:h-[180px] h-[160px] relative border-none bg-[#0f0f0f] cursor-pointer ml-3">
+              <Card className="desktop:max-w-[380px] max-w-[330px] desktop:h-[140px] h-[160px] relative border-none bg-[#0f0f0f] cursor-pointer ml-3">
                 <CardContent
                   className="w-full h-full bg-contain filter brightness-50 hover:brightness-100 border-r-2 border-white
                   transition duration-500 ease-in-out flex justify-center items-center absolute hover:scale-105"
@@ -49,17 +48,10 @@ function FamousMoviesSlider() {
                     className="w-full h-full absolute"
                     onClick={() => selectedMovie.set(movie)}
                   >
-                    <div
-                      className="
-                    desktop:justify-end desktop:w-[250px] relative bottom-3 left-32 top-10 w-[200px] 
-                    h-fit flex justify-center items-end flex-col"
-                    >
-                      <h1 className="text-[18px] font-semibold text-white px-2">
+                    <div className='bg-red-500 flex flex-col justify-end text-start'>
+                      <h1 className="text-[18px] w-[150px] font-semibold text-white absolute bottom-0 right-10">
                         {movie.title}
                       </h1>
-                      <p className="text-[20px] font-semibold text-white relative bottom-1 right-3">
-                        {dayjs(movie.release_date).format('YYYY')}
-                      </p>
                     </div>
                   </DialogTrigger>
                 </CardContent>

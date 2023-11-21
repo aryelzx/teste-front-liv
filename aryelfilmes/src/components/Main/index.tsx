@@ -1,6 +1,6 @@
+import { Header } from "..//Header/page/index"
 import { Aside } from "../Aside/index"
 import { Body } from "../Body"
-import { Header } from "../Header"
 
 function Main() {
   return (

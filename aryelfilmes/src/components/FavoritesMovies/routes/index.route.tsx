@@ -1,5 +1,5 @@
 import { RouteObject } from 'react-router';
-import { FavoriteMoviesList } from '../index';
+import { FavoriteMoviesList } from '../page/index';
 
 const favouritesMoviesRoute: RouteObject[] = [{ path: '/favs', element: <FavoriteMoviesList /> }];
 

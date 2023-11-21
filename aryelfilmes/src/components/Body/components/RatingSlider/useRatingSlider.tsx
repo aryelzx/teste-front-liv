@@ -8,7 +8,7 @@ function UseRatingSlider() {
   const [selectedRatingMovie, setSelectedRatingMovie] = useState<DataMoviesInterface>({} as DataMoviesInterface)
   const [isFavorite, setIsFavorite] = useState(false)
 
-  const {SampleNextArrow} = UseFamousSlider()
+  const { SampleNextArrow } = UseFamousSlider()
 
   const { favsMovies } = useFavoritesMoviesContext()
 
@@ -23,7 +23,7 @@ function UseRatingSlider() {
     dots: false,
     infinite: true,
     speed: 1000,
-    slidesToShow: 4,
+    slidesToShow: 8,
     slidesToScroll: 4,
     nextArrow: <SampleNextArrow />,
     fade: false,

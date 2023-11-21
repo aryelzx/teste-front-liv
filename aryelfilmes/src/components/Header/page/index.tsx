@@ -5,11 +5,11 @@ import {
   DialogContent,
   DialogHeader,
   DialogTrigger,
-} from '../../shared/components/ui/dialog'
-import { Skeleton } from '../../shared/components/ui/skeleton'
-import { useMoviesContext } from '../../shared/contexts/moviesContext'
-import UseFavoritesList from '../FavoritesMovies/components/FavoritesList/useFavoritesList'
-import UseHeader from './useHeader'
+} from '../../../shared/components/ui/dialog'
+import { Skeleton } from '../../../shared/components/ui/skeleton'
+import { useMoviesContext } from '../../../shared/contexts/moviesContext'
+import UseFavoritesList from '../../FavoritesMovies/components/FavoritesList/useFavoritesList'
+import UseHeader from '../useHeader'
 function Header() {
   const { famousMovies } = useMoviesContext()
   const { handleRemoveFavoriteMovie } = UseFavoritesList()
