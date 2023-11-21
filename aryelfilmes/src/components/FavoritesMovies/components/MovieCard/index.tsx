@@ -23,7 +23,7 @@ function MovieList({ movie }: MovieListProps) {
           <Card className="max-w-[379px] h-[350px] relative border-none bg-[#141414] cursor-pointer ml-5">
             <CardContent
               className="w-full h-full bg-contain bg-center rounded-lg filter brightness-50 hover:brightness-100 
-                    transition duration-500 ease-in-out flex justify-center items-center absolute hover:scale-110"
+                    transition duration-500 ease-in-out flex justify-center items-center absolute hover:scale-105"
               style={{
                 backgroundImage: `url(https://image.tmdb.org/t/p/w500/${movie.poster_path})`,
                 backgroundRepeat: 'no-repeat'
