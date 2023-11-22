@@ -17,7 +17,7 @@ function Body() {
         )}
         {ratingMovies.value.results && (
           <div>
-            <h3 className="text-[20px] px-[18px] py-[10px] text-white font-semibold">
+            <h3 className="text-[20px] px-[18px]  text-white font-semibold">
               Filmes mais bem avaliados:
             </h3>
             <RatingMoviesSlider />

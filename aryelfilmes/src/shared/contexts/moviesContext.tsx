@@ -1,7 +1,8 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { GetMoviesOutputInterface } from "../../shared/interfaces/getMovies.interface";
+import { GetMoviesOutputInterface, GetUpComingMoviesOutputInterface } from "../../shared/interfaces/getMovies.interface";
 import { useGetFamousMovies } from "../services/getFamousMovies/getFamousMovies.service";
 import { useGetRatingMovies } from "../services/getRatedMovies/getRatingMovies.service";
+import { useGetUpComingMovies } from "../services/getUpComingMovies/getUpComingMovies.service";
 
 type MoviesContextProps = {
   famousMovies: {
@@ -12,6 +13,10 @@ type MoviesContextProps = {
     value: GetMoviesOutputInterface;
     setValue: (value: GetMoviesOutputInterface) => void;
   },
+  upComingMovies: {
+    value: GetUpComingMoviesOutputInterface;
+    setValue: (value: GetUpComingMoviesOutputInterface) => void;
+  },
 };
 
 const MoviesContext = createContext<MoviesContextProps>({} as MoviesContextProps);
@@ -19,6 +24,7 @@ const MoviesContext = createContext<MoviesContextProps>({} as MoviesContextProps
 const MoviesContextProvider = ({ children }: { children: React.ReactNode }) => {
   const [famousMovies, getFamousMovies] = useState<GetMoviesOutputInterface>({} as GetMoviesOutputInterface);
   const [ratingMovies, getRatingMovies] = useState<GetMoviesOutputInterface>({} as GetMoviesOutputInterface);
+  const [upComingMovies, getUpComingMovies] = useState<GetUpComingMoviesOutputInterface>({} as GetUpComingMoviesOutputInterface);
 
   const value: MoviesContextProps = {
     famousMovies: {
@@ -28,6 +34,10 @@ const MoviesContextProvider = ({ children }: { children: React.ReactNode }) => {
     ratingMovies: {
       value: ratingMovies,
       setValue: getRatingMovies,
+    },
+    upComingMovies: {
+      value: upComingMovies,
+      setValue: getUpComingMovies,
     },
   };
 
@@ -51,12 +61,26 @@ const MoviesContextProvider = ({ children }: { children: React.ReactNode }) => {
     }
   }
 
+  const GetUpComingMovies = async () => {
+    try {
+      const response = await useGetUpComingMovies.execute()
+      getUpComingMovies(response)
+    }
+    catch (err) {
+      console.log(err)
+    }
+  }
+
   useEffect(() => {
     GetFamousMovies()
   }, []);
 
   useEffect(() => {
     GetRatingMovies()
+  }, []);
+
+  useEffect(() => {
+    GetUpComingMovies()
   }, []);
 
   return (

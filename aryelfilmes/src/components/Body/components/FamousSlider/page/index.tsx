@@ -48,8 +48,8 @@ function FamousMoviesSlider() {
                     className="w-full h-full absolute"
                     onClick={() => selectedMovie.set(movie)}
                   >
-                    <div className='bg-red-500 flex flex-col justify-end text-start'>
-                      <h1 className="text-[18px] w-[150px] font-semibold text-white absolute bottom-0 right-10">
+                    <div className='flex flex-col justify-end text-start'>
+                      <h1 className="text-[18px] w-[150px] font-semibold text-white absolute bottom-0 right-1">
                         {movie.title}
                       </h1>
                     </div>
